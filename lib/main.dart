@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:prakerin/screens/home_screen.dart';
+import 'package:prakerin/constants.dart';
 
 void main() {
   runApp(MyApp());
@@ -10,19 +12,13 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
+      title: 'Covid-19 App',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
+        primaryColor: kPrimaryColor,
+        scaffoldBackgroundColor: kBackgroundColor,
+        textTheme: Theme.of(context).textTheme.apply(displayColor: kTextColor),
       ),
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text("Tracking Covid"),
-        ),
-        body: Center(
-          child: Text("Nauly Virya Huska Putra"),
-        ),
-      ),
+      home: HomeScreen(),
     );
   }
 }

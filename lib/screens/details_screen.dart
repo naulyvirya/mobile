@@ -39,12 +39,83 @@ class DetailsScreen extends StatelessWidget {
                       fontSize: 16,
                     ),
                   ),
+                  SizedBox(height: 15),
                   WeeklyChart(),
+                  SizedBox(height: 15),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: <Widget>[
+                      buildInfoTextWithPercentage(
+                        percentage: "6.43",
+                        title: "From Last Week",
+                      ),
+                      buildInfoTextWithPercentage(
+                        percentage: "9.43",
+                        title: "Recovery Rate",
+                      ),
+                    ],
+                  )
                 ],
               ),
-            )
+            ),
+            SizedBox(height: 20),
+            Container(
+              padding: EdgeInsets.all(20),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(20),
+                boxShadow: [
+                  BoxShadow(
+                    offset: Offset(0, 21),
+                    blurRadius: 54,
+                    color: Colors.black.withOpacity(0.05),
+                  ),
+                ],
+              ),
+              child: Column(
+                children: <Widget>[
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: <Widget>[
+                      Text(
+                        "Global Map",
+                        style: TextStyle(
+                          fontSize: 15,
+                        ),
+                      ),
+                      SvgPicture.asset("assets/icons/more.svg")
+                    ],
+                  ),
+                  SizedBox(height: 10),
+                  SvgPicture.asset("assets/icons/map.svg"),
+                ],
+              ),
+            ),
           ],
         ),
+      ),
+    );
+  }
+
+  RichText buildInfoTextWithPercentage({String title, String percentage}) {
+    return RichText(
+      text: TextSpan(
+        children: [
+          TextSpan(
+            text: "$percentage% \n",
+            style: TextStyle(
+              fontSize: 20,
+              color: kPrimaryColor,
+            ),
+          ),
+          TextSpan(
+            text: title,
+            style: TextStyle(
+              color: kTextMediumColor,
+              height: 1.5,
+            ),
+          )
+        ],
       ),
     );
   }
